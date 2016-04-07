@@ -1,0 +1,45 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static "blog/bootstrap.min.css" %}">
+    <title>{% block title %}{{ title }}{% endblock %}</title>
+    {% block extrahead %}{% endblock %}
+</head>
+<body>
+{% block header %}
+<div id="header">
+    <nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{% url "index" %}">Сырдах</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><a href="{% url "index" %}">Главная</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+{% endblock %}
+</div>
+<div class="container" id="content">
+    {% block content %}
+    {% endblock %}
+</div>
+<div class="footer">
+    <hr><h4>Copyright Artem Vasilev {% now "Y" %}</h4><br>
+    {% if flavour == "full" %}<i><a href="?flavour=mobile">Перейти в мобильную версию сайта</a></i>{% endif %}
+    {% if flavour == "mobile" %}<i><a href="?flavour=full">Перейти в полную версию сайта</a></i>{% endif %}
+</div>
+</body>
+</html>

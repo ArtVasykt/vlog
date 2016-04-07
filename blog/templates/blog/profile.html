@@ -1,0 +1,11 @@
+{% extends "blog/base.html" %}
+
+{% block title %}
+    {% if flavour == "mobile" %}Мобайл | {% elif flavour == "full" %}Фулл | {% endif %}Описание {{ profile.name|escape }}
+{% endblock %}
+{% block content %}
+    <img src="{{ profile.relative_avatar_url }}" alt="Ошибка">
+    <h1>{{ profile.name }}</h1>
+    <i>{{ profile.date_of_registration }}</i>
+    <p>{{ profile.description }}</p>
+{% endblock %}
